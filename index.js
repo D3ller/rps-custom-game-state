@@ -16,24 +16,23 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
 
   if (parsedUrl.pathname === "/updateGameState" && parsedUrl.query.state) {
-    const gameState = parsedUrl.query.state;
     rpc.setActivity({
-      details: gameState,
+      details: "Détails",
       largeImageKey: "repreviews",
-      largeImageText: "Logo de RepReviews",
+      largeImageText: "Description de l'image",
         instance: false,
         buttons: [
-            { label: "Site officiel", url: "https://repreview.karibsen.fr" },
-            { label: "Rejoindre le serveur", url: "https://discord.gg/8XZQ2QJ"}
+            { label: "Site officiel", url: "" },
+            { label: "Rejoindre le serveur", url: "https://discord.gg/"}
         ]
     });
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("GameState updated");
+    res.end("Mise à jour de l'état du jeu");
   } else {
     fs.readFile("index.html", (error, content) => {
       if (error) {
         res.writeHead(500);
-        res.end("Error loading index.html");
+        res.end("Erreur interne du serveur");
       } else {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(content, "utf-8");
@@ -43,6 +42,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000, () => {
-  console.log("Server running at http://localhost:8000/");
+  console.log("Le serveur à était lancé à l'adresse http://localhost:8000/");
   rpc.login({ clientId }).catch(console.error);
 });
