@@ -3,7 +3,7 @@ const fs = require("fs");
 const url = require("url");
 const DiscordRPC = require("discord-rpc");
 
-const clientId = "1158329363465523210";
+const clientId = "";
 DiscordRPC.register(clientId);
 
 const rpc = new DiscordRPC.Client({ transport: "ipc" });
@@ -16,10 +16,11 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
 
   if (parsedUrl.pathname === "/updateGameState" && parsedUrl.query.state) {
+    const gameState = parsedUrl.query.state;
     rpc.setActivity({
-      details: "Détails",
+      details: gameState,
       largeImageKey: "repreviews",
-      largeImageText: "Description de l'image",
+      largeImageText: "Logo de RepReviews",
         instance: false,
         buttons: [
             { label: "Site officiel", url: "https://test.com" },
@@ -27,12 +28,12 @@ const server = http.createServer((req, res) => {
         ]
     });
     res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Mise à jour de l'état du jeu");
+    res.end("GameState mis à jour");
   } else {
     fs.readFile("index.html", (error, content) => {
       if (error) {
         res.writeHead(500);
-        res.end("Erreur interne du serveur");
+        res.end("Erreur lors du chargement index.html");
       } else {
         res.writeHead(200, { "Content-Type": "text/html" });
         res.end(content, "utf-8");
@@ -42,6 +43,6 @@ const server = http.createServer((req, res) => {
 });
 
 server.listen(8000, () => {
-  console.log("Le serveur à était lancé à l'adresse http://localhost:8000/");
+  console.log("Serveur lancée http://localhost:8000/");
   rpc.login({ clientId }).catch(console.error);
 });
