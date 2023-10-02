@@ -1,4 +1,10 @@
 # Custom RPS for website
 
-Commencer par installer les dépendances avec `npm install`.
+Commencez par installer les dépendances avec 
+
+```npm install``
+
+Puis dans votre terminal, lancez la commande
+
+```node index.js```
 
