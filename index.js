@@ -22,8 +22,8 @@ const server = http.createServer((req, res) => {
       largeImageText: "Description de l'image",
         instance: false,
         buttons: [
-            { label: "Site officiel", url: "" },
-            { label: "Rejoindre le serveur", url: "https://discord.gg/"}
+            { label: "Site officiel", url: "https://test.com" },
+            { label: "Rejoindre le serveur", url: "https://test.com"}
         ]
     });
     res.writeHead(200, { "Content-Type": "text/plain" });
