@@ -2,12 +2,14 @@
 
 Commencez par installer les dépendances avec
 
-``npm install`
+```npm install```
 
 Puis dans votre terminal, lancez la commande
 
-`node index.js`
+```node index.js```
 
 Lorsque ceci est fait, rendez-vous sur votre navigateur à l'adresse suivante, cela permettra de lancer le serveur local.
 
-`http://localhost:8000`
+```http://localhost:8000```
+
+# Comment ajouter à son site
