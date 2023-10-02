@@ -1,3 +1,5 @@
+# RPS Custom Game State
+
 ## Lancer le serveur local
 
 Commencez par installer les dépendances avec
